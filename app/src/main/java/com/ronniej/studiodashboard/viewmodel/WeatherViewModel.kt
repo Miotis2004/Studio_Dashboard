@@ -40,8 +40,8 @@ class WeatherViewModel : ViewModel() {
                 } catch (e: Exception) {
                     _weatherState.value = WeatherState.Error(e.message ?: "Unknown error")
                 }
-                // Refresh every 30 minutes
-                delay(30 * 60 * 1000L)
+                // Refresh every 15 minutes
+                delay(15 * 60 * 1000L)
             }
         }
     }
