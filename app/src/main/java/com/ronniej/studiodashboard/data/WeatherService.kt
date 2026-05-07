@@ -3,29 +3,34 @@ package com.ronniej.studiodashboard.data
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
-data class WeatherForecastResponse(
-    val properties: WeatherProperties
+data class OpenWeatherResponse(
+    val main: MainData,
+    val weather: List<WeatherData>,
+    val name: String
 )
 
-data class WeatherProperties(
-    val periods: List<WeatherPeriod>
+data class MainData(
+    val temp: Double
 )
 
-data class WeatherPeriod(
-    val temperature: Int,
-    val temperatureUnit: String,
-    val shortForecast: String,
+data class WeatherData(
+    val description: String,
     val icon: String
 )
 
 interface WeatherService {
-    // Hardcoded URL for Creswell, OR as per requirements
-    @GET("gridpoints/PQR/86,33/forecast")
-    suspend fun getForecast(): WeatherForecastResponse
+    @GET("data/2.5/weather")
+    suspend fun getWeather(
+        @Query("lat") lat: Double,
+        @Query("lon") lon: Double,
+        @Query("appid") appid: String,
+        @Query("units") units: String
+    ): OpenWeatherResponse
 
     companion object {
-        private const val BASE_URL = "https://api.weather.gov/"
+        private const val BASE_URL = "https://api.openweathermap.org/"
 
         fun create(): WeatherService {
             return Retrofit.Builder()
