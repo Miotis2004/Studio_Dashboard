@@ -50,7 +50,7 @@ fun WeatherWidget(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         AsyncImage(
-                            model = state.currentWeather.icon,
+                            model = state.currentWeather.iconUrl,
                             contentDescription = "Weather Icon",
                             modifier = Modifier.size(80.dp)
                         )
@@ -62,7 +62,7 @@ fun WeatherWidget(
                                 color = MaterialTheme.colorScheme.onSurface
                             )
                             Text(
-                                text = state.currentWeather.shortForecast,
+                                text = state.currentWeather.description,
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
