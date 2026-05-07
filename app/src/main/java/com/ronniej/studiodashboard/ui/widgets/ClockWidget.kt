@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -43,7 +44,7 @@ fun ClockWidget(modifier: Modifier = Modifier) {
         ) {
             Text(
                 text = currentTime,
-                style = MaterialTheme.typography.displayLarge,
+                style = MaterialTheme.typography.displayLarge.copy(fontSize = 96.sp),
                 color = MaterialTheme.colorScheme.onSurface
             )
         }
